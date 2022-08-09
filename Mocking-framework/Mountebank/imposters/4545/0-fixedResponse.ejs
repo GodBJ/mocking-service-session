@@ -1,0 +1,21 @@
+{
+  "predicates": [
+    {
+      "equals": {
+        "method": "POST",
+        "path": "/fix/response/000"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "statusCode": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "<%- stringify(filename, '4545/responseBody/fixedResponseData.json') %>"
+      }
+    }
+  ]
+}

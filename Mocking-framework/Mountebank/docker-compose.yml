@@ -1,0 +1,16 @@
+---
+version: "3.5"
+
+services:
+
+  mountbank:
+    build:
+      context: ./
+    ports:
+      - "2525:2525"
+      - "4545:4545"
+      - "4546:4546"
+    volumes:
+      - ./imposters:/imposters
+    command: start --configfile imposters/imposters.ejs --allowInjection
+

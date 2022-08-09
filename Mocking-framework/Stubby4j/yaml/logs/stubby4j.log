@@ -1,0 +1,204 @@
+2022-08-09T13:05:39,327+00:00 INFO i.g.a.s.u.ConsoleUtils Loaded stub metadata: [POST] /post-body-as-json [Optional description shown in logs]
+2022-08-09T13:05:39,398+00:00 INFO i.g.a.s.u.ConsoleUtils Loaded stub metadata: [POST] /post-body-as-json [Optional description shown in logs]
+2022-08-09T13:05:39,406+00:00 INFO i.g.a.s.u.ConsoleUtils Loaded stub metadata: [GET] ^/one$ [Stub one]
+2022-08-09T13:05:39,423+00:00 INFO i.g.a.s.u.ConsoleUtils Loaded stub metadata: [GET] ^/resources/something/new?someKey=someValue
+2022-08-09T13:05:39,430+00:00 INFO i.g.a.s.u.ConsoleUtils Loaded stub metadata: [POST] /post-body-as-json
+2022-08-09T13:05:39,442+00:00 INFO i.g.a.s.u.ConsoleUtils Loaded stub metadata: [GET] /uri/with/sequenced/responses
+2022-08-09T13:05:39,453+00:00 INFO i.g.a.s.u.ConsoleUtils Loaded stub metadata: [GET] ^/account/(\d{5})/category/([a-zA-Z]+)?date=([a-zA-Z]+)
+2022-08-09T13:05:39,466+00:00 INFO i.g.a.s.u.ConsoleUtils Loaded stub metadata: [GET] /compliance/(\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b)
+2022-08-09T13:05:39,481+00:00 INFO i.g.a.s.u.ConsoleUtils Loaded proxy config metadata: default [this is a default proxy config that serves as a catch-all for non-matched requests]
+2022-08-09T13:05:39,485+00:00 INFO i.g.a.s.u.ConsoleUtils Loaded proxy config metadata: another-very-unique-string [this is a non-default proxy config which hits Yahoo]
+2022-08-09T13:05:39,491+00:00 INFO i.g.a.s.u.ConsoleUtils Loaded proxy config metadata: some-very-unique-string [this is a non-default proxy config which hits Google]
+2022-08-09T13:05:40,073+00:00 DEBUG i.g.a.s.f.MainYamlScanner Main YAML scan enabled, watching /home/stubby4j/data/smoke-tests-stubs.yaml.
+2022-08-09T13:05:40,082+00:00 DEBUG i.g.a.s.f.ExternalFilesScanner External file scan enabled, watching external files referenced from /home/stubby4j/data/smoke-tests-stubs.yaml.
+2022-08-09T13:05:40,104+00:00 DEBUG i.g.a.s.Main stubby4j successfully started after 1647 milliseconds.
+2022-08-09T13:05:40,106+00:00 DEBUG i.g.a.s.Main Admin portal:
+--------------------------------------------------------------------------------------------------------
+ > http://0.0.0.0:8891		Admin portal
+ > http://0.0.0.0:8891/status		Admin portal status
+
+
+Available insecure endpoints:
+--------------------------------------------------------------------------------------------------------
+ > http://0.0.0.0:8884		HTTP/1.1 stubs portal
+ > http://0.0.0.0:8884		HTTP/2 over TCP (h2c) stubs portal
+ > ws://0.0.0.0:8884/ws		HTTP/1.1 WebSockets stubs portal
+
+
+TLS layer configuration:
+--------------------------------------------------------------------------------------------------------
+ > Supported TLS protocol versions: [TLSv1.3, TLSv1.2] with ALPN extension on HTTP/2
+ > TLS layer configured using internal self-signed certificate
+
+
+Available secure endpoints:
+--------------------------------------------------------------------------------------------------------
+ > https://0.0.0.0:7445		HTTP/2 over TLS (h2) stubs portal
+
+2022-08-09T13:05:40,108+00:00 INFO i.g.a.s.Main Quit: ctrl-c
+2022-08-09T13:05:54,738+00:00 INFO i.g.a.s.u.ConsoleUtils [2022-08-09 13:05:54] => HTTP POST on [/post-body-as-json]
+2022-08-09T13:05:54,745+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [DEBUG INCOMING RAW HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:54,746+00:00 DEBUG i.g.a.s.u.ConsoleUtils    PROTOCOL: HTTP/1.1
+   METHOD: POST
+   CONTEXT PATH: 
+   SERVLET PATH: 
+   AUTH TYPE: null
+   REMOTE USER: null
+   REQUEST URI: /post-body-as-json
+   REQUEST URL: http://localhost:8884/post-body-as-json
+   QUERY STRING: null
+   PATH INFO: /post-body-as-json
+   PATH TRANSLATED: null
+   HEADERS: {
+   'Accept': */*,
+   'User-Agent': PostmanRuntime/7.29.2,
+   'Connection': keep-alive,
+   'Postman-Token': dae5f9c8-2413-4d41-b0ef-f107b13c0596,
+   'Host': localhost:8884,
+   'Accept-Encoding': gzip, deflate, br,
+   'Content-Length': 81,
+   'Content-Type': application/json,
+}
+2022-08-09T13:05:54,748+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [/DEBUG INCOMING RAW HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:54,762+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [DEBUG INCOMING ASSERTING HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:54,765+00:00 DEBUG i.g.a.s.u.ConsoleUtils StubRequest{url=/post-body-as-json, method=[POST], post={"userId":"19","requestId":"123","transactionDate":"124","transactionTime":"123"}, query={}, headers={accept=*/*, user-agent=PostmanRuntime/7.29.2, connection=keep-alive, postman-token=dae5f9c8-2413-4d41-b0ef-f107b13c0596, host=localhost:8884, accept-encoding=gzip, deflate, br, content-length=81, content-type=application/json}}
+2022-08-09T13:05:54,765+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [/DEBUG INCOMING ASSERTING HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:54,790+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed URL [/post-body-as-json] WITH incoming [/post-body-as-json]
+2022-08-09T13:05:54,791+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed METHOD [[POST]] WITH incoming [[POST]]
+2022-08-09T13:05:54,802+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed POST BODY [{"userId":"19","requestId":"(.*)","transactionDate":"(.*)","transactionTime":"(.*)"}] WITH incoming [{"userId":"19","requestId":"123","transactionDate":"124","transactionTime":"123"}]
+2022-08-09T13:05:54,803+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed HEADERS [{content-type=application/json}] WITH incoming [{accept=*/*, user-agent=PostmanRuntime/7.29.2, connection=keep-alive, postman-token=dae5f9c8-2413-4d41-b0ef-f107b13c0596, host=localhost:8884, accept-encoding=gzip, deflate, br, content-length=81, content-type=application/json}]
+2022-08-09T13:05:54,805+00:00 DEBUG i.g.a.s.s.StubRepository Found a stubbed match after 38 milliseconds Description [Optional description shown in logs]
+2022-08-09T13:05:54,825+00:00 INFO i.g.a.s.u.ConsoleUtils [2022-08-09 13:05:54] <= 200 OK
+
+2022-08-09T13:05:55,834+00:00 INFO i.g.a.s.u.ConsoleUtils [2022-08-09 13:05:55] => HTTP POST on [/post-body-as-json]
+2022-08-09T13:05:55,837+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [DEBUG INCOMING RAW HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:55,839+00:00 DEBUG i.g.a.s.u.ConsoleUtils    PROTOCOL: HTTP/1.1
+   METHOD: POST
+   CONTEXT PATH: 
+   SERVLET PATH: 
+   AUTH TYPE: null
+   REMOTE USER: null
+   REQUEST URI: /post-body-as-json
+   REQUEST URL: http://localhost:8884/post-body-as-json
+   QUERY STRING: null
+   PATH INFO: /post-body-as-json
+   PATH TRANSLATED: null
+   HEADERS: {
+   'Accept': */*,
+   'User-Agent': PostmanRuntime/7.29.2,
+   'Connection': keep-alive,
+   'Postman-Token': 5276042e-83a2-4fb1-9632-13b15b713bc9,
+   'Host': localhost:8884,
+   'Accept-Encoding': gzip, deflate, br,
+   'Content-Length': 81,
+   'Content-Type': application/json,
+}
+2022-08-09T13:05:55,841+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [/DEBUG INCOMING RAW HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:55,843+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [DEBUG INCOMING ASSERTING HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:55,845+00:00 DEBUG i.g.a.s.u.ConsoleUtils StubRequest{url=/post-body-as-json, method=[POST], post={"userId":"19","requestId":"123","transactionDate":"124","transactionTime":"123"}, query={}, headers={accept=*/*, user-agent=PostmanRuntime/7.29.2, connection=keep-alive, postman-token=5276042e-83a2-4fb1-9632-13b15b713bc9, host=localhost:8884, accept-encoding=gzip, deflate, br, content-length=81, content-type=application/json}}
+2022-08-09T13:05:55,852+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [/DEBUG INCOMING ASSERTING HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:55,854+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed URL [/post-body-as-json] WITH incoming [/post-body-as-json]
+2022-08-09T13:05:55,859+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed METHOD [[POST]] WITH incoming [[POST]]
+2022-08-09T13:05:55,864+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed POST BODY [{"userId":"19","requestId":"(.*)","transactionDate":"(.*)","transactionTime":"(.*)"}] WITH incoming [{"userId":"19","requestId":"123","transactionDate":"124","transactionTime":"123"}]
+2022-08-09T13:05:55,866+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed HEADERS [{content-type=application/json}] WITH incoming [{accept=*/*, user-agent=PostmanRuntime/7.29.2, connection=keep-alive, postman-token=5276042e-83a2-4fb1-9632-13b15b713bc9, host=localhost:8884, accept-encoding=gzip, deflate, br, content-length=81, content-type=application/json}]
+2022-08-09T13:05:55,870+00:00 DEBUG i.g.a.s.s.StubRepository Found a stubbed match after 16 milliseconds Description [Optional description shown in logs]
+2022-08-09T13:05:55,880+00:00 INFO i.g.a.s.u.ConsoleUtils [2022-08-09 13:05:55] <= 200 OK
+
+2022-08-09T13:05:56,804+00:00 INFO i.g.a.s.u.ConsoleUtils [2022-08-09 13:05:56] => HTTP POST on [/post-body-as-json]
+2022-08-09T13:05:56,806+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [DEBUG INCOMING RAW HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:56,806+00:00 DEBUG i.g.a.s.u.ConsoleUtils    PROTOCOL: HTTP/1.1
+   METHOD: POST
+   CONTEXT PATH: 
+   SERVLET PATH: 
+   AUTH TYPE: null
+   REMOTE USER: null
+   REQUEST URI: /post-body-as-json
+   REQUEST URL: http://localhost:8884/post-body-as-json
+   QUERY STRING: null
+   PATH INFO: /post-body-as-json
+   PATH TRANSLATED: null
+   HEADERS: {
+   'Accept': */*,
+   'User-Agent': PostmanRuntime/7.29.2,
+   'Connection': keep-alive,
+   'Postman-Token': f8b093a2-31cf-405d-ba21-a17a9ea6d6ee,
+   'Host': localhost:8884,
+   'Accept-Encoding': gzip, deflate, br,
+   'Content-Length': 81,
+   'Content-Type': application/json,
+}
+2022-08-09T13:05:56,807+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [/DEBUG INCOMING RAW HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:56,808+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [DEBUG INCOMING ASSERTING HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:56,808+00:00 DEBUG i.g.a.s.u.ConsoleUtils StubRequest{url=/post-body-as-json, method=[POST], post={"userId":"19","requestId":"123","transactionDate":"124","transactionTime":"123"}, query={}, headers={accept=*/*, user-agent=PostmanRuntime/7.29.2, connection=keep-alive, postman-token=f8b093a2-31cf-405d-ba21-a17a9ea6d6ee, host=localhost:8884, accept-encoding=gzip, deflate, br, content-length=81, content-type=application/json}}
+2022-08-09T13:05:56,811+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [/DEBUG INCOMING ASSERTING HTTP REQUEST DUMP] ***** 
+2022-08-09T13:05:56,812+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed URL [/post-body-as-json] WITH incoming [/post-body-as-json]
+2022-08-09T13:05:56,812+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed METHOD [[POST]] WITH incoming [[POST]]
+2022-08-09T13:05:56,814+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed POST BODY [{"userId":"19","requestId":"(.*)","transactionDate":"(.*)","transactionTime":"(.*)"}] WITH incoming [{"userId":"19","requestId":"123","transactionDate":"124","transactionTime":"123"}]
+2022-08-09T13:05:56,815+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed HEADERS [{content-type=application/json}] WITH incoming [{accept=*/*, user-agent=PostmanRuntime/7.29.2, connection=keep-alive, postman-token=f8b093a2-31cf-405d-ba21-a17a9ea6d6ee, host=localhost:8884, accept-encoding=gzip, deflate, br, content-length=81, content-type=application/json}]
+2022-08-09T13:05:56,815+00:00 DEBUG i.g.a.s.s.StubRepository Found a stubbed match after 4 milliseconds Description [Optional description shown in logs]
+2022-08-09T13:05:56,819+00:00 INFO i.g.a.s.u.ConsoleUtils [2022-08-09 13:05:56] <= 200 OK
+
+2022-08-09T13:06:03,289+00:00 INFO i.g.a.s.u.ConsoleUtils [2022-08-09 13:06:03] => HTTP GET on [/one]
+2022-08-09T13:06:03,291+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [DEBUG INCOMING RAW HTTP REQUEST DUMP] ***** 
+2022-08-09T13:06:03,293+00:00 DEBUG i.g.a.s.u.ConsoleUtils    PROTOCOL: HTTP/1.1
+   METHOD: GET
+   CONTEXT PATH: 
+   SERVLET PATH: 
+   AUTH TYPE: null
+   REMOTE USER: null
+   REQUEST URI: /one
+   REQUEST URL: http://localhost:8884/one
+   QUERY STRING: null
+   PATH INFO: /one
+   PATH TRANSLATED: null
+   HEADERS: {
+   'Accept': */*,
+   'User-Agent': PostmanRuntime/7.29.2,
+   'Connection': keep-alive,
+   'Postman-Token': 13772dba-f041-4f65-ab39-0162851bf581,
+   'Host': localhost:8884,
+   'Accept-Encoding': gzip, deflate, br,
+}
+2022-08-09T13:06:03,295+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [/DEBUG INCOMING RAW HTTP REQUEST DUMP] ***** 
+2022-08-09T13:06:03,298+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [DEBUG INCOMING ASSERTING HTTP REQUEST DUMP] ***** 
+2022-08-09T13:06:03,300+00:00 DEBUG i.g.a.s.u.ConsoleUtils StubRequest{url=/one, method=[GET], query={}, headers={accept=*/*, user-agent=PostmanRuntime/7.29.2, connection=keep-alive, postman-token=13772dba-f041-4f65-ab39-0162851bf581, host=localhost:8884, accept-encoding=gzip, deflate, br}}
+2022-08-09T13:06:03,302+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [/DEBUG INCOMING ASSERTING HTTP REQUEST DUMP] ***** 
+2022-08-09T13:06:03,304+00:00 ERROR i.g.a.s.s.StubMatcher Failed to match on stubbed URL [/post-body-as-json] WITH incoming [/one]
+2022-08-09T13:06:03,306+00:00 ERROR i.g.a.s.s.StubMatcher Failed to match on stubbed URL [/post-body-as-json] WITH incoming [/one]
+2022-08-09T13:06:03,309+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed URL [^/one$] WITH incoming [/one]
+2022-08-09T13:06:03,312+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed METHOD [[GET]] WITH incoming [[GET]]
+2022-08-09T13:06:03,314+00:00 DEBUG i.g.a.s.s.StubRepository Found a stubbed match after 9 milliseconds Description [Stub one]
+2022-08-09T13:06:03,424+00:00 INFO i.g.a.s.u.ConsoleUtils [2022-08-09 13:06:03] <= 200 OK
+
+2022-08-09T13:06:04,294+00:00 INFO i.g.a.s.u.ConsoleUtils [2022-08-09 13:06:04] => HTTP GET on [/one]
+2022-08-09T13:06:04,295+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [DEBUG INCOMING RAW HTTP REQUEST DUMP] ***** 
+2022-08-09T13:06:04,298+00:00 DEBUG i.g.a.s.u.ConsoleUtils    PROTOCOL: HTTP/1.1
+   METHOD: GET
+   CONTEXT PATH: 
+   SERVLET PATH: 
+   AUTH TYPE: null
+   REMOTE USER: null
+   REQUEST URI: /one
+   REQUEST URL: http://localhost:8884/one
+   QUERY STRING: null
+   PATH INFO: /one
+   PATH TRANSLATED: null
+   HEADERS: {
+   'Accept': */*,
+   'User-Agent': PostmanRuntime/7.29.2,
+   'Connection': keep-alive,
+   'Postman-Token': 5e005710-d47b-4332-875f-4dc580a5f777,
+   'Host': localhost:8884,
+   'Accept-Encoding': gzip, deflate, br,
+}
+2022-08-09T13:06:04,298+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [/DEBUG INCOMING RAW HTTP REQUEST DUMP] ***** 
+2022-08-09T13:06:04,298+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [DEBUG INCOMING ASSERTING HTTP REQUEST DUMP] ***** 
+2022-08-09T13:06:04,299+00:00 DEBUG i.g.a.s.u.ConsoleUtils StubRequest{url=/one, method=[GET], query={}, headers={accept=*/*, user-agent=PostmanRuntime/7.29.2, connection=keep-alive, postman-token=5e005710-d47b-4332-875f-4dc580a5f777, host=localhost:8884, accept-encoding=gzip, deflate, br}}
+2022-08-09T13:06:04,299+00:00 DEBUG i.g.a.s.u.ConsoleUtils  ***** [/DEBUG INCOMING ASSERTING HTTP REQUEST DUMP] ***** 
+2022-08-09T13:06:04,301+00:00 ERROR i.g.a.s.s.StubMatcher Failed to match on stubbed URL [/post-body-as-json] WITH incoming [/one]
+2022-08-09T13:06:04,302+00:00 ERROR i.g.a.s.s.StubMatcher Failed to match on stubbed URL [/post-body-as-json] WITH incoming [/one]
+2022-08-09T13:06:04,303+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed URL [^/one$] WITH incoming [/one]
+2022-08-09T13:06:04,306+00:00 INFO i.g.a.s.s.StubMatcher Matched on stubbed METHOD [[GET]] WITH incoming [[GET]]
+2022-08-09T13:06:04,307+00:00 DEBUG i.g.a.s.s.StubRepository Found a stubbed match after 6 milliseconds Description [Stub one]
+2022-08-09T13:06:04,414+00:00 INFO i.g.a.s.u.ConsoleUtils [2022-08-09 13:06:04] <= 200 OK
+

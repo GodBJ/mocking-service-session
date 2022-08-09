@@ -1,0 +1,23 @@
+{
+  "protocol": "http",
+  "port": 4545,
+  "defaultResponse": {
+    "statusCode": 404
+  },
+  "stubs": [
+    <% include 0-fixedResponse.ejs %>,
+    <% include 1-responseSetupAndTeardown.ejs %>,
+    <% include 2-delayTime.ejs %>,
+    <% include 3-commandToCallback.ejs %>,
+    <% include 4-recordAndReplay.ejs %>
+
+  ],
+  "_links": {
+    "self": {
+      "href": "http://localhost:2525/imposters/4545"
+    },
+    "stubs": {
+      "href": "http://localhost:2525/imposters/4545/stubs"
+    }
+  }
+}

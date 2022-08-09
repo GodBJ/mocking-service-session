@@ -1,0 +1,185 @@
+{
+  "port": 4545,
+  "protocol": "https",
+  "name": "imposter contract service",
+  "recordRequests": "true",
+  "numberOfRequests": "1",
+  "defaultResponse": {
+    "statusCode": 400,
+    "body": "Bad Request",
+    "headers": {}
+  },
+  "stubs": [
+    {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 201,
+            "headers": {
+              "Location": "http://example.com/resource"
+            },
+            "body": "The time is ${TIME}",
+            "_mode": "text"
+          },
+          "repeat": 3,
+          "behaviors": [
+            {
+              "wait": 500
+            },
+            {
+              "decorate": "config => { config.response.body = config.response.body.replace('${TIME}', 'now'); }"
+            },
+            {
+              "shellTransform": "transformResponse"
+            },
+            {
+              "copy": {
+                "from": "body",
+                "into": "${NAME}",
+                "using": {
+                  "method": "xpath",
+                  "selector": "//test:name",
+                  "ns": {
+                    "test": "http://example.com/test"
+                  }
+                }
+              }
+            },
+            {
+              "lookup": {
+                "key": {
+                  "from": {
+                    "headers": "If-Modified-Since"
+                  },
+                  "using": {
+                    "method": "regex",
+                    "selector": "(\\w+), (\\d+) (\\w+) (\\d+)",
+                    "options": {
+                      "ignoreCase": true,
+                      "multiline": true
+                    }
+                  },
+                  "index": 2
+                },
+                "fromDataSource": {
+                  "csv": {
+                    "path": "values.csv",
+                    "keyColumn": "month",
+                    "delimiter": ","
+                  }
+                },
+                "into": "${row}"
+              }
+            }
+          ]
+        },
+        {
+          "proxy": {
+            "to": "https://www.somesite.com:3000",
+            "mode": "proxyAlways",
+            "addWaitBehavior": "true",
+            "addDecorateBehavior": "(request, response) => { response.body = response.body.replace('${TIME}', 'now'); }",
+            "predicateGenerators": [
+              {
+                "matches": {
+                  "path": true
+                },
+                "caseSensitive": true,
+                "except": "^The^",
+                "jsonpath": {
+                  "selector": "$..book"
+                },
+                "xpath": {
+                  "selector": "//book/@title",
+                  "ns": {
+                    "isbn": "http://schemas.isbn.org/ns/1999/basic.dtd"
+                  }
+                },
+                "inject": "function (config) { return []; }"
+              }
+            ],
+            "injectHeaders": {
+              "X-Custom-Header": "Served by mountebank"
+            }
+          }
+        },
+        {
+          "inject": "function (config) { config.callback({ body: 'It worked!' }); }"
+        }
+      ],
+      "predicates": [
+        {
+          "equals": {
+            "body": "value"
+          },
+          "caseSensitive": true,
+          "except": "^The ",
+          "jsonpath": {
+            "selector": "$..book"
+          },
+          "xpath": {
+            "selector": "//book/@title",
+            "ns": {
+              "isbn": "http://schemas.isbn.org/ns/1999/basic.dtd"
+            }
+          }
+        },
+        {
+          "inject": "function (config) { return config.request.body.length < 100; }"
+        }
+      ],
+      "matches": [
+        {
+          "timestamp": "2014-01-09T02:30:31.043Z",
+          "request": {
+            "requestFrom": "::ffff:127.0.0.1:60523",
+            "method": "POST",
+            "path": "/imposters",
+            "query": {},
+            "headers": {
+              "accept": "text/plain",
+              "host": "localhost:4545",
+              "content-type": "application/xml",
+              "connection": "keep-alive",
+              "transfer-encoding": "chunked"
+            },
+            "body": "<books><book title='The value' /></books>"
+          },
+          "response": {
+            "statusCode": 201,
+            "headers": {
+              "Location": "http://example.com/resource"
+            },
+            "body": "The time is now",
+            "_mode": "text"
+          }
+        }
+      ]
+    }
+  ],
+  "endOfRequestResolver": {
+    "inject": "function (config) { return config.request.length >= 100; }"
+  },
+  "requests": [
+    {
+      "timestamp": "2014-01-09T02:30:31.043Z",
+      "requestFrom": "::ffff:127.0.0.1:60523",
+      "method": "POST",
+      "path": "/imposters",
+      "query": {},
+      "headers": {
+        "accept": "text/plain",
+        "host": "localhost:4545",
+        "content-type": "text/plain",
+        "connection": "keep-alive",
+        "transfer-encoding": "chunked"
+      },
+      "body": "Just checking"
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "http://localhost:2525/imposters/4545"
+    }
+  }
+}

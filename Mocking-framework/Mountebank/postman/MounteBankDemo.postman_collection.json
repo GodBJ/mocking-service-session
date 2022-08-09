@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "9772782f-0d56-4a23-97c6-cb8c7e46a8bb",
+		"name": "MounteBank Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0-fixedResponse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4545/fix/response/000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4545",
+					"path": [
+						"fix",
+						"response",
+						"000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-responseSetupAndTeardown",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4546/response/setup/teardown/001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4546",
+					"path": [
+						"response",
+						"setup",
+						"teardown",
+						"001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-setup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"index\": 0,\n  \"stub\": {\n    \"responses\": [{\n      \"is\": {\n        \"body\": {\n            \"Id\": \"001\",\n            \"Value\": \"This is data for setup\"\n        }   \n      }\n    }],\n    \"predicates\": [\n        {\n        \"equals\": {\n            \"method\": \"POST\",\n            \"path\": \"/response/setup/teardown/001\"\n        }\n        }\n    ]\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2525/imposters/4546/stubs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2525",
+					"path": [
+						"imposters",
+						"4546",
+						"stubs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-teardown",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"stubs\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2525/imposters/4546/stubs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2525",
+					"path": [
+						"imposters",
+						"4546",
+						"stubs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2-delayTime",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4545/delay/time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4545",
+					"path": [
+						"delay",
+						"time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3-commandToCallback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"http://localhost:5050/call/back/mounteBank\",\n    \"config\": {\n        \"method\": \"POST\",   \n        \"headers\": {\n            \"Content-Type\": \"application/json\"\n        },\n        \"body\": {\n            \"id\": \"0011233206961\"\n        }\n    }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4545/callback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4545",
+					"path": [
+						"callback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4-recordAndReplay",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set('complianceId',pm.response.json().data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-myobapi-tenantid",
+						"value": "{{tenantid}}",
+						"disabled": true
+					},
+					{
+						"key": "x-myobapi-clientid",
+						"value": "{{clientid}}",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n   \"data\":\"record\"\n}"
+				},
+				"url": {
+					"raw": "localhost:4545/record/replay",
+					"host": [
+						"localhost"
+					],
+					"port": "4545",
+					"path": [
+						"record",
+						"replay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get imposter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2525/imposters/4545",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2525",
+					"path": [
+						"imposters",
+						"4545"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,24 @@
+{
+  "predicates": [
+    {
+      "equals": {
+        "method": "POST",
+        "path": "/delay/time"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "statusCode": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "<%- stringify(filename, '4545/responseBody/delayTimeData.json') %>"
+      },
+      "behaviors": [
+        { "wait": 5000 }
+      ]
+    }
+  ]
+}

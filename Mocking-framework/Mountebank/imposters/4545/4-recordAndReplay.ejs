@@ -1,0 +1,16 @@
+{
+  "predicates": [
+    {
+      "equals": {
+        "method": "POST",
+        "path": "/record/replay"
+      }
+    }
+  ],
+  "responses": [{
+    "proxy": {
+      "to": "http://localhost:5050",
+      "mode": "proxyOnce"
+    }
+  }]
+}
