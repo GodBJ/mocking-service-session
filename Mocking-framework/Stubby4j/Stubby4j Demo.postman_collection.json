@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "a289e879-fa00-4344-ac92-e016f278ffc5",
+		"name": "Stubby4j Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "fixResponseforRequest",
+			"item": [
+				{
+					"name": "post-body-as-json",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\":\"19\",\"requestId\":\"123\",\"transactionDate\":\"124\",\"transactionTime\":\"123\"}",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8884/post-body-as-json",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8884",
+							"path": [
+								"post-body-as-json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8884/one",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8884",
+							"path": [
+								"one"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "set Response for certian request",
+			"item": [
+				{
+					"name": "query and save origin stub by uuid",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8891/test-a-b-c-d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8891",
+							"path": [
+								"test-a-b-c-d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update stub by uuid",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {  \"uuid\":\"test-a-b-c-d\",\n    \"request\": {\n      \"url\": \"^/resources/something/new/test\",\n      \"query\": {\n        \"someKey\": \"someValue\"\n      },\n      \"method\": [\n        \"GET\"\n      ]\n    },\n    \"response\": {\n      \"body\": \"OK\",\n      \"headers\": {\n        \"content-type\": \"application/xml\"\n      },\n      \"status\": 201\n    }\n  }\n]"
+						},
+						"url": {
+							"raw": "http://localhost:8891/test-a-b-c-d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8891",
+							"path": [
+								"test-a-b-c-d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recovery the stub",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"uuid\":\"test-a-b-c-d\",\n    \"request\": {\n      \"url\": \"^/resources/something/new\",\n      \"query\": {\n        \"someKey\": \"someValue\"\n      },\n      \"method\": [\n        \"GET\"\n      ]\n    },\n    \"response\": {\n      \"body\": \"OK\",\n      \"headers\": {\n        \"content-type\": \"application/xml\"\n      },\n      \"status\": 201\n    }\n  }\n]"
+						},
+						"url": {
+							"raw": "http://localhost:8891/test-a-b-c-d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8891",
+							"path": [
+								"test-a-b-c-d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "callBack",
+			"item": [
+				{
+					"name": "request trriger callback",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-stubby4j-proxy-request-uuid",
+								"value": "some-very-unique-string",
+								"type": "text"
+							},
+							{
+								"key": "x-myobapi-tenantid",
+								"value": "{{tenantid}}",
+								"type": "text"
+							},
+							{
+								"key": "x-myobapi-clientid",
+								"value": "{{clientid}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \n   \"data\":{  \n      \"attributes\":{  \n         \"complianceType\":\"ctr\",\n         \"period\":{  \n            \"periodStart\":\"2018-07-01T09:12:33.001Z\",\n            \"periodEnd\":\"2019-06-30T09:12:33.001Z\"\n         }\n      },\n      \"type\":\"compliance\"\n   }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8884//proxy/call/back",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8884",
+							"path": [
+								"",
+								"proxy",
+								"call",
+								"back"
+							],
+							"query": [
+								{
+									"key": "x-stubby4j-proxy-request-uuid",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "response delay",
+			"item": [
+				{
+					"name": "post-body-as-json",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\":\"19\",\"requestId\":\"123\",\"transactionDate\":\"124\",\"transactionTime\":\"123\"}",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8884/post-body-as-json",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8884",
+							"path": [
+								"post-body-as-json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fault injection",
+			"item": [
+				{
+					"name": "fault injection",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "custom-header",
+								"value": "1234",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8884/uri/with/sequenced/responses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8884",
+							"path": [
+								"uri",
+								"with",
+								"sequenced",
+								"responses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Regex support for dynamic matching request",
+			"item": [
+				{
+					"name": "Regex support",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "custom-header",
+								"value": "1234",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8884/account/12345/category/abcd?date=yesterday",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8884",
+							"path": [
+								"account",
+								"12345",
+								"category",
+								"abcd"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "yesterday"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Copy value from request to response",
+			"item": [
+				{
+					"name": "copy value from request",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "custom-header",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8884/account/12345/category/abc?date=today",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8884",
+							"path": [
+								"account",
+								"12345",
+								"category",
+								"abc"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "today"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin api",
+			"item": [
+				{
+					"name": "get all stub config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8891",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8891"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get stub config by uuid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8891/test-a-b-c-d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8891",
+							"path": [
+								"test-a-b-c-d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new stub",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"request\": {\n      \"url\": \"^/resources/something/new\",\n      \"query\": {\n        \"someKey\": \"someValue\"\n      },\n      \"method\": [\n        \"GET\"\n      ]\n    },\n    \"response\": {\n      \"body\": \"OK\",\n      \"headers\": {\n        \"content-type\": \"application/xml\"\n      },\n      \"status\": 201\n    }\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8891/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8891",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
